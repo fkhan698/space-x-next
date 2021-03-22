@@ -19,10 +19,10 @@ const useStyles = makeStyles({
     padding: 0
   },
   title: {
-    marginTop: "2rem",
+    marginTop: "3rem",
     textAlign: "center",
-    textTransform: "uppercase",
-    fontSize: "3rem"
+    fontSize: "3rem",
+    textTransform: "uppercase"
   },
   container: {
     display: "flex",
@@ -30,21 +30,26 @@ const useStyles = makeStyles({
     alignContent: "center",
     marginTop: "6rem"
   },
+  rocketImage: {
+    display: "flex",
+    justifyContent: "flex-end"
+  },
   falconImage: {
-    width: "20%",
-    top: "10%",
+    width: "40%",
+
     height: "100%",
 
     marginRight: "10rem"
   },
   table: {
-    maxWidth: 500,
+    maxWidth: 600,
     color: "white",
     backgroundColor: "rgba(0, 0, 0, 0.4)"
   },
   tableCell: {
-    fontSize: "1.5rem",
-    color: "white"
+    fontSize: "1.1rem",
+    color: "white",
+    textTransform: "uppercase"
   }
 });
 
@@ -71,12 +76,12 @@ const query = gql`
   }
 `;
 
-export default function Falcon9() {
+export default function Starship() {
   const classes = useStyles();
   const { loading, data } = useQuery(query);
   if (loading) return <p>Loading Masterpieces ...</p>;
   console.log(data);
-  const rockets = data.rockets[1];
+  const rockets = data.rockets[3];
 
   return (
     <>
@@ -87,7 +92,7 @@ export default function Falcon9() {
           transition={{ ease: "easeOut", duration: 0.5 }}
           className={classes.title}
         >
-          Falcon 9 Overview
+          Starship Overview
         </motion.h2>
         <Container className={classes.container}>
           <TableContainer>
@@ -135,14 +140,13 @@ export default function Falcon9() {
               </Table>
             </motion.table>
           </TableContainer>
-
           <div className="rocketImage">
             <motion.div
               animate={{ y: -45 }}
               transition={{ duration: 1, times: [1, 0.3, 6] }}
             >
               <img
-                src="https://raw.githubusercontent.com/tipenehughes/space-x-app/master/src/Assets/img/F9.png"
+                src="https://raw.githubusercontent.com/tipenehughes/space-x-app/master/src/Assets/img/SS.png"
                 className={classes.falconImage}
               ></img>
             </motion.div>

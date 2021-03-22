@@ -1,5 +1,7 @@
 import React from "react";
 import Link from "next/link";
+import { motion } from "framer-motion";
+
 import Typography from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -14,13 +16,10 @@ const useStyles = makeStyles({
   },
   link: {
     color: "white",
-    marginTop: "2rem"
+    margin: 5
   },
   nav: {
-    margin: 2
-  },
-  brand: {
-    marginTop: "1rem"
+    margin: "2rem"
   }
 });
 
@@ -41,17 +40,23 @@ export default function Header() {
       </Typography>
       <Typography className={classes.label}>
         <Link href="/Falcon9">
-          <a className={classes.link}> Falcon 9</a>
+          <motion.a whileHover={{ scale: 1.3 }}>
+            <a className={classes.link}> Falcon 9</a>
+          </motion.a>
         </Link>
       </Typography>
       <Typography className={classes.label}>
-        <Link href="/dragons">
-          <a className={classes.link}> Dragons</a>
+        <Link href="/Starship">
+          <motion.a whileHover={{ scale: 1.3 }}>
+            <a className={classes.link}> Starship</a>
+          </motion.a>
         </Link>
       </Typography>
       <Typography className={classes.label}>
-        <Link href="/crew">
-          <a className={classes.link}>Crew</a>
+        <Link href="/Dragons">
+          <motion.a whileHover={{ scale: 1.3 }}>
+            <a className={classes.link}> Dragons</a>
+          </motion.a>
         </Link>
       </Typography>
     </div>

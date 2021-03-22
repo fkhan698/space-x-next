@@ -19,10 +19,10 @@ const useStyles = makeStyles({
     padding: 0
   },
   title: {
+    fontSize: "2.5rem",
     marginTop: "2rem",
     textAlign: "center",
-    textTransform: "uppercase",
-    fontSize: "3rem"
+    textTransform: "uppercase"
   },
   container: {
     display: "flex",
@@ -31,10 +31,6 @@ const useStyles = makeStyles({
     marginTop: "6rem"
   },
   falconImage: {
-    width: "20%",
-    top: "10%",
-    height: "100%",
-
     marginRight: "10rem"
   },
   table: {
@@ -43,40 +39,30 @@ const useStyles = makeStyles({
     backgroundColor: "rgba(0, 0, 0, 0.4)"
   },
   tableCell: {
-    fontSize: "1.5rem",
+    fontSize: "1rem",
     color: "white"
   }
 });
 
 const query = gql`
   query {
-    rockets {
+    dragons {
       name
+      dry_mass_kg
+      dry_mass_lb
+      crew_capacity
+      active
       description
-      height {
-        feet
-        meters
-      }
-      diameter {
-        feet
-        meters
-      }
-      mass {
-        kg
-        lb
-      }
-      cost_per_launch
-      first_flight
     }
   }
 `;
 
-export default function Falcon9() {
+export default function Dragons() {
   const classes = useStyles();
   const { loading, data } = useQuery(query);
   if (loading) return <p>Loading Masterpieces ...</p>;
   console.log(data);
-  const rockets = data.rockets[1];
+  const dragons = data.dragons[0];
 
   return (
     <>
@@ -87,8 +73,9 @@ export default function Falcon9() {
           transition={{ ease: "easeOut", duration: 0.5 }}
           className={classes.title}
         >
-          Falcon 9 Overview
+          Dragon Overview
         </motion.h2>
+
         <Container className={classes.container}>
           <TableContainer>
             <motion.table
@@ -104,30 +91,29 @@ export default function Falcon9() {
                 <TableBody>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
-                      {rockets.description}
+                      {dragons.description}
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
-                      Height: {rockets.height.feet} ft / {rockets.height.meters}{" "}
-                      meters
+                      Crew Capacity: {dragons.crew_capacity}
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
-                      Mass: {rockets.mass.lb} lb / {rockets.mass.kg} kg
+                      Mass: kg
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
-                      Cost per Launch: ${rockets.cost_per_launch}
+                      Cost per Launch:
                     </TableCell>
                   </TableRow>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
                       First Flight:{" "}
                       <Moment format="MM/DD/YYYY">
-                        {rockets.first_flight}
+                        {dragons.first_flight}
                       </Moment>
                     </TableCell>
                   </TableRow>
@@ -135,14 +121,13 @@ export default function Falcon9() {
               </Table>
             </motion.table>
           </TableContainer>
-
           <div className="rocketImage">
             <motion.div
-              animate={{ y: -45 }}
+              animate={{ y: 50 }}
               transition={{ duration: 1, times: [1, 0.3, 6] }}
             >
               <img
-                src="https://raw.githubusercontent.com/tipenehughes/space-x-app/master/src/Assets/img/F9.png"
+                src="https://raw.githubusercontent.com/tipenehughes/space-x-app/master/src/Assets/img/D2.png"
                 className={classes.falconImage}
               ></img>
             </motion.div>

@@ -1,10 +1,32 @@
 import Head from "next/head";
 import Link from "next/link";
-import { styles } from "../styles/Home.module.css";
-
-import Landing from "./landing/landing";
+import { makeStyles } from "@material-ui/core/styles";
+import Header from "../components/Header";
+import Container from "@material-ui/core/Container";
+import Homepage from "../components/Homepage";
 import { style } from "@material-ui/system";
+import Falcon9 from "./Falcon9";
 import { gql, useQuery } from "@apollo/client";
+
+const useStyles = makeStyles({
+  root: {
+    color: "white",
+    height: "100vh",
+    padding: 0
+  },
+  title: {
+    marginTop: "2rem",
+    textAlign: "center",
+    textTransform: "uppercase",
+    color: "white"
+  },
+  container: {
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+    marginTop: "6rem"
+  }
+});
 
 const query = gql`
   query {
@@ -14,10 +36,16 @@ const query = gql`
   }
 `;
 export default function Home() {
-  const { loading, data } = useQuery(query);
-  if (loading) return <p>Loading Masterpieces ...</p>;
-  console.log(data);
+  const classes = useStyles();
 
-  const missions = data.launchesUpcoming[0].mission_name;
-  return <div>{missions}</div>;
+  return (
+    <>
+      <Header />
+      <Container>
+        <div>
+          <Homepage />
+        </div>
+      </Container>
+    </>
+  );
 }
