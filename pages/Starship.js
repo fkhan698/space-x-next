@@ -101,11 +101,7 @@ export default function Starship() {
               transition={{ ease: "easeOut", duration: 0.5 }}
             >
               <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell align="center">Specifcations</TableCell>
-                  </TableRow>
-                </TableHead>
+                <TableHead></TableHead>
                 <TableBody>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">

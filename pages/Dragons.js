@@ -38,6 +38,14 @@ const useStyles = makeStyles({
     color: "white",
     backgroundColor: "rgba(0, 0, 0, 0.4)"
   },
+
+  tableHead: {
+    color: "white",
+    fontSize: "2rem"
+  },
+  specs: {
+    color: "white"
+  },
   tableCell: {
     fontSize: "1rem",
     color: "white"
@@ -83,11 +91,7 @@ export default function Dragons() {
               transition={{ ease: "easeOut", duration: 0.5 }}
             >
               <Table className={classes.table} aria-label="simple table">
-                <TableHead>
-                  <TableRow>
-                    <TableCell align="center">Specifcations</TableCell>
-                  </TableRow>
-                </TableHead>
+                <TableHead className={classes.tableHead}></TableHead>
                 <TableBody>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
@@ -101,14 +105,11 @@ export default function Dragons() {
                   </TableRow>
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
-                      Mass: kg
+                      Mass: {dragons.dry_mass_lb} lbs / {dragons.dry_mass_kg}{" "}
+                      kgs
                     </TableCell>
                   </TableRow>
-                  <TableRow>
-                    <TableCell className={classes.tableCell} align="center">
-                      Cost per Launch:
-                    </TableCell>
-                  </TableRow>
+
                   <TableRow>
                     <TableCell className={classes.tableCell} align="center">
                       First Flight:{" "}
